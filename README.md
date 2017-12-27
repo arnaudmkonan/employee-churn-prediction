@@ -4,7 +4,7 @@ GSU - Machine Learning Lesson Project
 
 # Dataset
 HR Analytics Data is published [here](https://www.kaggle.com/ludobenistant/hr-analytics/downloads/HR_comma_sep.csv) to resolve employee churn prediction.
-Dataset is also exist in project under <b>dataset folder<b>, you can access easily.
+Dataset is also exist in project under <b>dataset folder</b>, you can access easily.
 
 # Environment setup
     * Conda (4.4.4)
@@ -70,7 +70,7 @@ After execution model performance will be written to logs like:
     max min_per_class_accuracy   0.167209     0.971267  178
     max mean_per_class_accuracy  0.216413     0.975685  160
     Gains/Lift Table: Avg response rate: 23.99 %
-<code>
+</code>
 
 In addition to detailed performance result,if you need to see detailed information about dataset and model, you point your browser to http://localhost:54321, you will see H20 Flow GUI.
 employee-churn-prediction.py removes all H2O datasets before creating models due to prevent data duplication.
