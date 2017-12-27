@@ -7,9 +7,7 @@ h2o.init(ip="localhost", port=54321)
 h2o.remove_all()
 
 # Loading HR Analytics Data from CSV File
-
-hrDatasetFile = r'/Users/KadriyeDogan/dev/hr-dataset/HR_comma_sep.csv'
-full_data_frame = h2o.H2OFrame(pd.read_csv(hrDatasetFile, index_col=None, header=0))
+full_data_frame = h2o.H2OFrame(pd.read_csv("dataset/HR_comma_sep.csv", index_col=None, header=0))
 
 # Defining categorical features
 feature_columns = [
