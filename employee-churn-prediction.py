@@ -14,7 +14,7 @@ feature_columns = [
     'left',
     'Work_accident',
     'promotion_last_5years',
-    'sales'
+    'department'
 ]
 
 # Defining continuous features
