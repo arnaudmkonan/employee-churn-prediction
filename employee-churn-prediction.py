@@ -38,10 +38,9 @@ feature_columns.extend(continuous_feature_columns)
 training_data_frame = training_data_frame[feature_columns]
 test_data_frame = test_data_frame[feature_columns]
 
-# Initialize RandomForestModel
-
+# Initialize Random Forest Estimator
 random_forest_model = h2o.H2ORandomForestEstimator(
-    model_id="HREmployeeChurnPrediction",
+    model_id="HREmployeeChurnPredictionRandomForest",
     ntrees=10,
     max_depth=10,
     min_rows=4,
@@ -50,5 +49,31 @@ random_forest_model = h2o.H2ORandomForestEstimator(
 )
 
 random_forest_model.train(y='left', training_frame=training_data_frame)
-performance = random_forest_model.model_performance(test_data=test_data_frame)
-print(performance)
+random_forest_model_performance = random_forest_model.model_performance(test_data=test_data_frame)
+print(random_forest_model_performance)
+
+# Initialize Naive Bayes Estimator
+naive_bayes_model = h2o.H2ONaiveBayesEstimator(
+    model_id="HREmployeeChurnPredictionNaiveBayes",
+    nfolds=10,
+    seed=123456
+)
+
+naive_bayes_model.train(y='left', training_frame=training_data_frame)
+naive_bayes_model_performance = naive_bayes_model.model_performance(test_data=test_data_frame)
+print(naive_bayes_model_performance)
+
+# Initialize Gradient Boosting Estimator
+gradient_boosting_model = h2o.H2OGradientBoostingEstimator(
+    model_id="HREmployeeChurnPredictionGradientBoosting",
+    ntrees=10,
+    max_depth=10,
+    stopping_tolerance=0.01,
+    stopping_rounds=2,
+    score_each_iteration=True,
+    seed=1234567
+)
+
+gradient_boosting_model.train(y='left', training_frame=training_data_frame)
+gradient_boosting_model_performance = gradient_boosting_model.model_performance(test_data=test_data_frame)
+print(gradient_boosting_model)
