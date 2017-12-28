@@ -77,3 +77,15 @@ gradient_boosting_model = h2o.H2OGradientBoostingEstimator(
 gradient_boosting_model.train(y='left', training_frame=training_data_frame)
 gradient_boosting_model_performance = gradient_boosting_model.model_performance(test_data=test_data_frame)
 print(gradient_boosting_model)
+
+# Initialize Generalized Linear Estimator
+generalized_linear_model = h2o.H2OGeneralizedLinearEstimator(
+    model_id="HREmployeeChurnPredictionGeneralizedLinear",
+    nfolds=10,
+    max_iterations=20,
+    family="binomial",
+    seed=1234567
+)
+generalized_linear_model.train(y='left', training_frame=training_data_frame)
+generalized_linear_model_performance = generalized_linear_model.model_performance(test_data=test_data_frame)
+print(generalized_linear_model_performance)
